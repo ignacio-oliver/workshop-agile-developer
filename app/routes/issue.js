@@ -1,5 +1,6 @@
 const express = require('express');
 const { issueStore, severityStore } = require('../models');
+
 const router = express.Router();
 
 router.get('/', function(req, res) {
