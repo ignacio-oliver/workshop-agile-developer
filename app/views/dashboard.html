@@ -9,6 +9,10 @@
     <div class="issues--count">
       {{openIssuesCount}}
     </div>
-    <div>OPEN ISSUES</div>
+    <div>Open Issues</div>
   </div>
 </section>
+
+<div class= "dashboard__gauges">
+  {{> gauge title="High" class="high" percentage=highIssuesCount}}
+</div>
