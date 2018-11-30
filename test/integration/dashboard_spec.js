@@ -96,6 +96,11 @@ describe('Dashboard', function () {
             status: "open",
             severity: "High"
         });
+        cy.fixture({
+            title: "Issue 4",
+            status: "closed",
+            severity: "Low"
+        });        
 
         cy.visit('/dashboard');
 
@@ -116,7 +121,7 @@ describe('Dashboard', function () {
             .should('contain', '0%');
     });
 
-    it('new low issue refresh dashboard', function () {
+    it('updates gauge chart when a new low issue is created', function () {
     
         cy.fixture({
             title: "Issue 2",
