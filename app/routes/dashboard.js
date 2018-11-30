@@ -9,8 +9,9 @@ router.get('/', function(req, res) {
 
   let highIssuesPercentage = calculatePercentage(openIssues, 'High');
   let mediumIssuesPercentage = calculatePercentage(openIssues, 'Medium');
+  let lowIssuesPercentage = calculatePercentage(openIssues, 'Low');
 
-  res.render('dashboard', {openIssuesCount, highIssuesPercentage, mediumIssuesPercentage});
+  res.render('dashboard', {openIssuesCount, highIssuesPercentage, mediumIssuesPercentage, lowIssuesPercentage});
   
 });
 
