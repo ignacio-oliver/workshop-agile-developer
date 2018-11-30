@@ -6,12 +6,20 @@ router.get('/', function(req, res) {
 
   const openIssues = issueStore.getAllOpen();
   const openIssuesCount = openIssues.length;
-  let highIssuesCount = 0;
-  if(openIssuesCount > 0){
-    highIssuesCount = openIssues.filter(issue => issue.severity === 'High').length / openIssuesCount;
-  }
-  res.render('dashboard', {openIssuesCount, highIssuesCount});
+
+  let highIssuesPercentage = calculatePercentage(openIssues, 'High');
+  let mediumIssuesPercentage = calculatePercentage(openIssues, 'Medium');
+
+  res.render('dashboard', {openIssuesCount, highIssuesPercentage, mediumIssuesPercentage});
   
 });
+
+function calculatePercentage(issues, severity){
+  let percentage = 0;
+  if(issues.length > 0){
+    percentage = issues.filter(issue => issue.severity === severity).length / issues.length;
+  }
+  return percentage;
+}
 
 module.exports = router;
